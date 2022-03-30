@@ -31,6 +31,8 @@ class AwesomeListPage extends StatefulWidget {
 
 class _AwesomeListPageState extends State<AwesomeListPage> {
 
+  final List<String> movies = <String>['Turning Red', 'Spider-man: No Way Home', 'Encanto', 'Black Light'];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,22 +41,15 @@ class _AwesomeListPageState extends State<AwesomeListPage> {
       ),
       body: Center(
         child:
-            ListView(
+            ListView.builder(
               padding: const EdgeInsets.all(10.0),
-              children: <Widget>[
-                Container(
+              itemCount: movies.length,
+              itemBuilder: (BuildContext context, int index) {
+                return Container(
                   height: 50.0,
-                  child: const Text('Turning Red'),
-                ),
-                Container(
-                  height: 50.0,
-                  child: const Text('Spider-man: No Way Home'),
-                ),
-                Container(
-                  height: 50.0,
-                  child: const Text('Encanto'),
-                )
-              ],
+                  child: Text('${movies[index]}'),
+                );
+              },
             )
         ),
     );
